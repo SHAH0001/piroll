@@ -1,0 +1,43 @@
+// font-family: 'Montserrat', sans-serif;
+// font-family: 'Noto Sans', sans-serif;
+
+body {
+    font-family: $montserrat, Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    background-color: #fff;
+    margin: 0;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity .5s;
+}
+
+.fade-enter,
+.fade-leave-to
+{
+    opacity: 0;
+}
