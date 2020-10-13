@@ -21,7 +21,6 @@
       <button @click="showMobileMenu = !showMobileMenu" type="button" class="nav__burger">
         <span v-if="!showMobileMenu" class="nav__burger-item"></span>
         <span v-else class="nav__burger-close"></span>
-
       </button>
     </nav>
     <div class="main-block">
@@ -34,6 +33,41 @@
         </p>
         <a class="link main-block__link" href="#">Contact us</a>
         </div>
+    </div>
+    <div class="about-block container">
+      <h2 class="about-block__title">About Us</h2>
+      <p class="about-block__description">
+        Divide have don't man wherein air fourth. Own itself make have night won't make. 
+        A you under Seed appear which good give. Own give air without fowl moveth dry first 
+        heaven fruit, dominion she'd won't very all.
+      </p>
+      <img class="about-block__img" :src="getImage('signature.png')" alt="">
+    </div>
+    <div class="professional-skills">
+      <div class="professional-skills__left">
+        <div class="professional-skills__wrapper">
+          <h3 class="professional-skills__title">Professional Skills</h3>
+          <div class="skill-progress">
+            <span class="skill-progress__title">UI/UX Design <span class="skill-progress__count">75%</span></span>
+            <div class="skill-progress__total">
+              <div style="width: 67%;" class="skill-progress__current"></div>  
+            </div>
+          </div>
+          <div class="skill-progress">
+            <span class="skill-progress__title">Web development <span class="skill-progress__count">90%</span></span>
+            <div class="skill-progress__total">
+              <div style="width: 85%;" class="skill-progress__current"></div>  
+            </div>
+          </div>
+          <div class="skill-progress">
+            <span class="skill-progress__title">Marketing  <span class="skill-progress__count">65%</span></span>
+            <div class="skill-progress__total">
+              <div style="width: 56%;" class="skill-progress__current"></div>  
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="professional-skills__right"></div>
     </div>
     <footer style="height:250px;"></footer>
   </div>
@@ -55,7 +89,13 @@ export default {
       ],
       showMobileMenu: false
     }
+  },
+  methods: {
+    getImage(path) {
+      return require('./assets/images/' + path);
+    }
   }
+
 }
 </script>
 
@@ -85,22 +125,22 @@ export default {
 
     &__logo {
       display: inline-block;
-      margin: 38px 0 0 8px;
+      margin: 38px 0 0 -19px;
+
+      @include max-width-1260 {
+        margin: 38px 0 0 0;
+      }
 
       @include max-width-750 {
         margin: 0;
       }
     }
 
-    &__img {
-
-    }
-
     &__items {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 29px -38px 0 0;
+      margin: 29px -14px 0 0;
       padding: 0;
       list-style: none;
 
@@ -126,10 +166,6 @@ export default {
       background-color: #5f5f5f;
       margin: 0;
       padding: 60px 0 0 0;
-    }
-
-    &__item {
-
     }
 
     &__link {
@@ -233,7 +269,7 @@ export default {
     &__info {
       position: absolute;
       top: 202px;
-      right: 387px;
+      right: 410px;
       z-index: 4;
       text-align: right;
 
@@ -271,7 +307,7 @@ export default {
 
     &__link {
       display: inline-block;
-      margin: 6px 276px 0 0;
+      margin: 6px 280px 0 0;
 
       @include max-width-1190 {
         margin: 0;
@@ -286,6 +322,125 @@ export default {
     height: 670px;
     z-index: 3;
     background-color: rgba(12, 12, 12, 0.5);
+  }
+
+  .about-block {
+    text-align: center;
+    margin-top: 696px;
+
+    &__title {
+      font-size: 30px;
+      color: $mainTextColor;
+    }  
+
+    &__description {
+      font-family: $notoSans;
+      font-size: 16px;
+      color: $textColor;
+      line-height: 24px;
+      margin: 0 250px;
+
+      @include max-width-1260 {
+        margin: 0;
+        padding: 0 15px;
+      }
+    }
+
+    &__img {
+      display: inline-block;
+      margin: 35px 0 0 0;
+    }
+  }
+
+  .professional-skills {
+    display: flex;
+    margin: 96px 0 0 0;
+
+    @include max-width-850 {
+      flex-direction: column;
+    }
+
+    &__left {
+      width: 50%;
+      background-color: #f8f9f9;
+      padding: 0 0 129px 0;
+
+      @include max-width-1750 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 65px 0;
+      }
+
+      @include max-width-850 {
+        width: 100%;
+      }
+    }
+
+    &__wrapper {
+      max-width: 520px;
+      margin: 158px 0 0 363px;
+
+      @include max-width-1750 {
+        width: 100%;
+        margin: 0;
+        padding: 0 15px;
+      }
+    }
+
+    &__title {
+      font-size: 30px;
+      color: #171717;
+      margin: 0;
+    }
+
+    &__right {
+      width: 50%;
+      background-image: url(./assets/images/professional_skills.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: 50%;
+
+      @include max-width-850 {
+        width: 100%;
+        height: 420px;
+      }
+    }
+  }
+
+  .skill-progress {
+    
+    margin: 27px 0 35px 0;
+
+    &__title {
+      font-size: 12px;
+      font-weight: bold;
+      color: #000;
+      text-transform: uppercase;
+    }  
+
+    &__count {
+      display: inline-block;
+      margin: 0 0 0 27px;
+    }
+
+    &__total {
+      position: relative;
+      max-width: 500px;
+      height: 3px;
+      background-color: #d8d8d8;
+      margin: 16px 0 0 0;
+    }
+
+    &__current {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background-color: $mainColor;
+    }
+
   }
 
 </style>

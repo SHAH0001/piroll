@@ -1,3 +1,9 @@
+@mixin max-width-1750 {
+    @media screen and (max-width: 1750px) {
+        @content
+    }
+}
+
 @mixin max-width-1260 {
     @media screen and (max-width: 1260px) {
         @content
@@ -6,6 +12,12 @@
 
 @mixin max-width-1190 {
     @media screen and (max-width: 1190px) {
+        @content
+    }
+}
+
+@mixin max-width-850 {
+    @media screen and (max-width: 850px) {
         @content
     }
 }
