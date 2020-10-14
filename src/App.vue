@@ -192,11 +192,148 @@
         </div>
       </div>
     </div>
-    <footer style="height:250px;"></footer>
+    <v-Slider 
+      :sliderData="slides" 
+      :interval="5000"
+    >
+    </v-Slider>
+    <div class="logos">
+      <div class="logos__wrapper container">
+        <a v-for="(item, index) in 5" :key="index" class="logos__link" href="#">
+          <img class="logos__img" :src="getImage('logo_'+ item + '.jpg')" alt="">
+        </a>
+      </div>
+    </div>
+    <div class="project-order">
+      <div class="container">
+        <div class="project-order__wrapper">
+          <h3 class="project-order__title">Need a Project?</h3>
+          <p class="project-order__description">
+            Let us know what you're looking for in an agency. We'll take a look and see if this could be the start of something beautiful.
+          </p>
+          <form action="#" method="post">
+            <div class="order-form">
+              <div class="order-form__info">
+                <input 
+                  name="name"
+                  class="order-form__input order-form__short order-form__name" 
+                  type="text"
+                  placeholder="Your Name"
+                />
+                <input 
+                  name="email"
+                  class="order-form__input order-form__short" 
+                  type="text"
+                  placeholder="Your Email"
+                />
+              </div>
+              <div class="order-form__title">
+                <input 
+                  name="title"
+                  class="order-form__input order-form__long"
+                  type="text"
+                  placeholder="Your Title"
+                />
+              </div>
+              <div class="order-form__comment">
+                <textarea 
+                  class="order-form__textarea"
+                  name="comment" 
+                  cols="30"
+                  rows="10"
+                  placeholder="Your Comment"
+                ></textarea>
+              </div>
+              <button 
+                type="submit" 
+                class="order-form__send link"
+              >
+                Send message
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__wrapper">
+          
+          <div class="footer__column">
+            <h4 class="footer__title">Piroll Design, Inc.</h4>
+            <span>
+              © 2017 Piroll. All rights reserved. <br />
+              Designed by robirurk.
+            </span>
+          </div>
+          
+          <div class="footer__column">
+            <span>
+              hello@pirolltheme.com <br />
+              +44 987 065 908
+            </span>
+          </div>
+          
+          <div class="footer__column">
+            <ul class="footer__items">
+              <li class="footer__item">
+                <a class="footer__link" href="#">Projects</a>
+              </li>
+              <li class="footer__item">
+                <a class="footer__link" href="#">About</a>
+              </li>
+              <li class="footer__item">
+                <a class="footer__link" href="#">Services</a>
+              </li>
+              <li class="footer__item">
+                <a class="footer__link" href="#">Carreer</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="footer__column">
+            <ul class="footer__items">
+              <li class="footer__item">
+                <a class="footer__link" href="#">News</a>
+              </li>
+              <li class="footer__item">
+                <a class="footer__link" href="#">Events</a>
+              </li>
+              <li class="footer__item">
+                <a class="footer__link" href="#">Contact</a>
+              </li>
+              <li class="footer__item">
+                <a class="footer__link" href="#">Legals</a>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="footer__column">
+            <ul class="footer__items">
+              <li class="footer__item">
+                <a class="footer__link" href="#">Facebook</a>
+              </li>
+              <li class="footer__item">
+                <a class="footer__link" href="#">Twitter</a>
+              </li>
+              <li class="footer__item">
+                <a class="footer__link" href="#">Instagram</a>
+              </li>
+              <li class="footer__item">
+                <a class="footer__link" href="#">Dribbble</a>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
+import vSlider from './components/Slider/V-slider.vue'
+
 export default {
   name: 'App',
   data() {
@@ -211,7 +348,36 @@ export default {
         'contact'
       ],
       showMobileMenu: false,
-      videoPlay: false
+      videoPlay: false,
+      slides: [
+        {
+          id: 1,
+          title: `“ Outstanding job and exceeded all expectations. 
+                    It was a pleasure to work with them on a sizable 
+                    first project and am looking forward to start 
+                    the next one asap.”
+                  `,
+          author: 'Michael Hopkins'
+        },
+        {
+          id: 2,
+          title: `“ Outstanding job and exceeded all expectations. 
+                    It was a pleasure to work with them on a sizable 
+                    first project and am looking forward to start 
+                    the next one asap.”
+                  `,
+          author: 'Michael Hopkins'
+        },
+        {
+          id: 3,
+          title: `“ Outstanding job and exceeded all expectations. 
+                    It was a pleasure to work with them on a sizable 
+                    first project and am looking forward to start 
+                    the next one asap.”
+                  `,
+          author: 'Michael Hopkins'
+        }
+      ]
     }
   },
   methods: {
@@ -230,8 +396,10 @@ export default {
         this.videoPlay = false
       }
     }
+  },
+  components: {
+    vSlider
   }
-
 }
 </script>
 
@@ -240,11 +408,15 @@ export default {
 
   .link {
     font-size: 12px;
+    font-weight: bold;
     padding: 20px 50px;
     text-decoration: none;
     text-transform: uppercase;
     color: #fff;
     background-color: $mainColor;
+    border: none;
+    outline: none;
+    cursor: pointer;
   }
 
   .nav {
@@ -808,7 +980,7 @@ export default {
     &__wrapper {
       display: flex;
       flex-wrap: wrap;
-      padding: 101px 0 40px 0;
+      padding: 101px 0 38px 0;
 
       @include max-width-950 {
         justify-content: center;
@@ -887,6 +1059,205 @@ export default {
 
   .paint-bucket {
     background-image: url(./assets/images/paint_bucket.png);
+  }
+
+  .logos {
+    margin: 65px 0 0 0;
+
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include max-width-950 {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+      text-align: center;
+      width: 11%;
+
+      @include max-width-950 {
+        width: 25%;
+        margin-bottom: 30px;
+      }
+
+      @include max-width-950 {
+        width: 40%;
+      }
+
+      @include max-width-550 {
+        width: 100%;
+        margin-bottom: 50px;
+      }
+    }
+  }
+
+  .project-order {
+    background-color: #f5f5f5;
+    margin: 60px 0 0 0;
+    padding: 94px 0 100px 0;
+
+    &__wrapper {
+
+    }
+
+    &__title {
+      font-size: 30px;
+      color: #1d1d1d;
+      margin: 0;
+      text-align: center;
+    }
+
+    &__description {
+      font-family: $notoSans;
+      font-size: 16px;
+      color: $textColor;
+      margin: 27px 270px 0 270px;
+      line-height: 24px;
+      text-align: center;
+
+      @include max-width-950 {
+        margin: 27px 0 0 0;
+        padding: 0 15px;
+      }
+    }
+
+  }
+
+  .order-form {
+    max-width: 670px;
+    margin: 35px auto 0 auto;
+
+    &__info {
+      display: flex;
+      justify-content: space-between;
+      margin: 0 0 30px 0;
+
+      @include max-width-550 {
+        flex-direction: column;
+        margin: 0
+      }
+    }
+
+    &__input {
+      font-family: $notoSans;
+      font-size: 15px;
+      color: $textColor;
+      height: 48px;
+      border: none;
+      outline: none;
+      padding: 0 0 0 17px;
+    } 
+    
+    &__short {
+      width: 320px;
+
+      @include max-width-750 {
+        width: 45%;
+      }
+
+      @include max-width-550 {
+        width: 100%;
+        margin-bottom: 30px;
+      }
+    }
+
+    &__long {
+      width: 670px;
+
+      @include max-width-750 {
+        width: 100%;
+      }
+    }
+
+    &__name {
+    }
+
+    &__title {
+      margin: 0 0 30px 0;
+    }
+
+    &__comment {
+
+    }
+
+    &__textarea {
+      font-family: $notoSans;
+      font-size: 15px;
+      color: $textColor;
+      height: 168px;
+      border: none;
+      outline: none;
+      resize: none;
+      width: 670px;
+      padding: 13px 0 0 17px;
+
+      @include max-width-750 {
+        width: 100%;
+      }
+    }
+
+    &__send {
+      display: block;
+      margin: 28px auto 0 auto;
+    }
+
+  }
+
+  .footer {
+    font-family: $notoSans;    
+    font-size: 15px;
+    color: #bcbcbc;
+    background-color: #141414;
+    padding: 94px 0 94px 0;
+
+    &__wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      @include max-width-1190 {
+        justify-content: space-around;
+      }
+
+      @include max-width-750 {
+        flex-direction: column;
+      }
+    }
+
+    &__column {
+      @include max-width-750 {
+        margin-bottom: 30px;
+      }
+    }
+
+    &__items {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    &__item {
+
+    }
+
+    &__link {
+      color: #bcbcbc;
+      text-decoration: none;
+    }
+
+    &__title {
+      font-family: $montserrat;
+      font-size: 18px;
+      color: #fff;
+      margin: 0;
+    }
+
   }
 
 </style>
